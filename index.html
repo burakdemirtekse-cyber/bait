@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wishlist Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://sellauth.com/assets/js/sellauth-embed-2.js"></script>
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="https://i.imgur.com/8Km9tLL.png">
+<link rel="apple-touch-icon" href="https://i.imgur.com/8Km9tLL.png">
+
+<!-- BASIC SEO (clean + safe) -->
+<meta name="description" content="Personal wishlist store with instant checkout support. Browse and support items instantly through secure checkout.">
+<meta name="keywords" content="wishlist, store, support, checkout, digital products, sellauth">
+<meta name="author" content="Wishlist Store">
+
+<!-- Open Graph (social sharing preview) -->
+<meta property="og:title" content="Wishlist Store">
+<meta property="og:description" content="Support my wishlist instantly with secure checkout.">
+<meta property="og:image" content="https://i.imgur.com/8Km9tLL.png">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wishlist Store">
+<meta name="twitter:description" content="Support my wishlist instantly with secure checkout.">
+<meta name="twitter:image" content="https://i.imgur.com/8Km9tLL.png">
+
+<style>
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: radial-gradient(circle at top, #fff 0%, #f3f4f6 55%, #eef0f3 100%);
+  color: #111;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 14px;
+}
+
+/* =========================
+   HERO WRAPPER (FUTURISTIC PANEL)
+========================= */
+.hero {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  margin-bottom: 18px;
+
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,246,248,0.9));
+
+  border: 1px solid rgba(0,0,0,0.08);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.06),
+    inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+
+/* futuristic outline glow */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  pointer-events: none;
+
+  box-shadow:
+    0 0 0 1px rgba(124,58,237,0.15),
+    0 0 30px rgba(124,58,237,0.08);
+}
+
+/* =========================
+   BANNER IMAGE
+========================= */
+.hero-banner {
+  height: 140px;
+  width: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* =========================
+   PROFILE ROW OVERLAP
+========================= */
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 0 16px 16px;
+  margin-top: -28px;
+}
+
+/* profile pic floating over banner */
+.hero-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+
+  border: 2px solid rgba(255,255,255,0.9);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(124,58,237,0.25);
+
+  background: #fff;
+}
+
+/* text */
+.hero-text h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.hero-text p {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: rgba(0,0,0,0.55);
+}
+
+/* =========================
+   FUTURISTIC DIVIDER (between hero and grid)
+========================= */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124,58,237,0.25),
+    rgba(0,0,0,0.08),
+    rgba(124,58,237,0.25),
+    transparent
+  );
+  margin: 10px 0 16px;
+  opacity: 0.9;
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+/* =========================
+   CARD (kept clean)
+========================= */
+.card {
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: .18s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.08);
+  border-color: rgba(124,58,237,0.25);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* content */
+.content {
+  padding: 12px;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.desc {
+  font-size: 12px;
+  color: rgba(0,0,0,0.55);
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+/* BUY BUTTON */
+.buy {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, #fff, #f5f5f7);
+  font-weight: 900;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .15s ease;
+}
+
+.buy:hover {
+  border-color: rgba(124,58,237,0.4);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.10);
+}
+
+/* =========================
+   MOBILE PERFECT TWEAKS
+========================= */
+@media (max-width: 600px) {
+
+  .hero-banner {
+    height: 110px;
+  }
+
+  .hero-avatar {
+    width: 62px;
+    height: 62px;
+  }
+
+  .hero-text h1 {
+    font-size: 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="hero">
+
+  <!-- BANNER -->
+  <img class="hero-banner" src="https://images.unsplash.com/photo-1526481280695-3c687fd5432c">
+
+  <!-- PROFILE ROW -->
+  <div class="hero-content">
+    <img class="hero-avatar" src="https://i.imgur.com/8Km9tLL.png">
+
+    <div class="hero-text">
+      <h1>My Wishlist</h1>
+      <p>Clean support store — instant checkout enabled</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="section-divider"></div>
+
+  <div class="grid">
+
+    <div class="card" data-product="730225" data-variant="1189287" data-price="10">
+      <img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8">
+      <div class="content">
+        <div class="title">Gaming Upgrade</div>
+        <div class="desc">Performance setup</div>
+        <button class="buy" onclick="buy(this)"></button>
+      </div>
+    </div>
+
+    <div class="card" data-product="102" data-variant="1" data-price="25">
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
+      <div class="content">
+        <div class="title">Headset</div>
+        <div class="desc">Audio quality</div>
+        <button class="buy" onclick="buy(this)"></button>
+      </div>
+    </div>
+
+    <div class="card" data-product="103" data-variant="1" data-price="80">
+      <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf">
+      <div class="content">
+        <div class="title">Keyboard</div>
+        <div class="desc">Mechanical feel</div>
+        <button class="buy" onclick="buy(this)"></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* set price text */
+document.querySelectorAll('.card').forEach(c => {
+  c.querySelector('.buy').textContent = "$" + c.dataset.price;
+});
+
+/* FIXED SELLAUTH CHECKOUT */
+const SHOP_ID = 239845;
+
+function buy(btn) {
+  const card = btn.closest('.card');
+
+  const productId = Number(card.dataset.product);
+  const variantId = Number(card.dataset.variant);
+
+  if (!window.sellAuthEmbed) {
+    alert("SellAuth not loaded");
+    return;
+  }
+
+  window.sellAuthEmbed.checkout(btn, {
+    shopId: SHOP_ID,
+    cart: [
+      {
+        productId,
+        variantId,
+        quantity: 1
+      }
+    ],
+    modal: true,
+    scrollTop: true
+  });
+}
+</script>
+
+</body>
+</html>
